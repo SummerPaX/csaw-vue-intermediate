@@ -4,19 +4,19 @@ import { v4 as uuidv4 } from "uuid";
 
 const items = ref([
 	{
-		id: 124,
+		id: "124",
 		name: "Max",
 	},
 	{
-		id: 231,
+		id: "231",
 		name: "Thomas",
 	},
 	{
-		id: 65,
+		id: "65",
 		name: "Julia",
 	},
 	{
-		id: 32,
+		id: "32",
 		name: "Franziska",
 	},
 ]);
@@ -48,12 +48,17 @@ function randomSort() {
 	<button @click="removeRandomName">Remove Name</button>
 	<button @click="randomSort">Random Sort</button>
 
-	<TransitionGroup class="block" name="list" tag="div">
-		<p v-for="item in items" :key="item.id">{{ item.name }}</p>
+	<TransitionGroup class="list" name="list" tag="div">
+		<div v-for="item in items" :key="item.id">{{ item.name }}</div>
 	</TransitionGroup>
 </template>
 
 <style scoped>
+.list {
+	display: block;
+	position: relative;
+}
+
 .list-move, /* apply transition to moving elements */
 .list-enter-active,
 .list-leave-active {
